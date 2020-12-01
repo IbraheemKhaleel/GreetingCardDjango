@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Cards</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style>
+    *{
+        margin: 2px;
+        padding: 5px;
+      } 
+      body{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+      .main{
+        margin: 2%;
+      }
+      .card{
+        width: 20%;
+        display: inline-block;
+        box-shadow: 2px 2px 20px rgb(219, 18, 18);
+        border-radius: 5px;
+        margin: 5%;
+      } 
+      .title{
+        text-align: left;
+        padding: 10px;
+        color: brown;
+      }
+      .description{
+        padding: 10px;
+        text-align: left;
+        padding-top: 10px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+      p{
+        color: silver;
+      }
+      footer{
+        text-align: center;
+        background-color: black;
+        color: aqua;
+      }
+      .card:hover {
+        color: green;
+      }
+       
+</style>
+<body>
+
+<h1> Greeting card layout </h1>
+
+<div id = "greetingcard"></div>
+
+<script> 
+    let message_array = 
+[
+    
+    {
+        message: "Hello",
+        name: "Khaleel"
+    },
+
+    {
+        message: "Hello",
+        name: "John"
+    },
+
+    {
+        message: "Hey",
+        name: "Mike"
+    },
+
+    {
+        message: "Hi!How are you?",
+        name: "Boss"
+    },
+
+    {
+        message: "Hello",
+        name: "River"
+    },
+
+    {
+        message: "Holla!",
+        name: "Depp"
+    },
+
+    {
+        message: "Yolo",
+        name: "Zakenir"
+    },
+
+    {
+        message: "Whats up",
+        name: "Benhur"
+    },
+
+    {
+        message: "Have a nice  day. ",
+        name: "Bankey Moon"
+    }
+]
+var div_string= "", index;
+for (index=0; index < message_array.length; index++){
+
+    div_string += "<div class='card'> <div class='title'> <h4>" + message_array[index].message + "</h4><p> (message)</p></div>"+"<div class='description'><h4> " +message_array[index].name + "</h4><p> (name)</p></div></div>";
+}
+document.getElementById("greetingcard").innerHTML = div_string;
+</script>     
+<body>
+    <h1> greeting card</h1>
+    <ul>
+        {% for list in greeting_ql %}
+        <li>{{list}}</li>
+        {% endfor %}
+    </ul>
+    <form action ='' method="post">
+        {% csrf_token %}
+        <ul>
+            {{ form.as_ul }}
+        </ul>
+        <input type="submit" value="Submit">
+    </form>
+    <form action='' method="get">
+        <label for='name'>Enter your name: </label>
+        <input id='name' type="text" name='name'>
+        <input type="submit" value="Click"> 
+    </form>
+<script>
+    $(document).ready(function(){
+        $.get("http://127.0.0.1:8000/greetingcard", function(data, status){
+          alert("Data: " + data + "\nStatus: " + status);
+          console.log("Data:", data)
+          var data_array = JSON.parse(data)
+        });
+    });
+    </script>
+<footer>
+    <h5>Author: Ibraheem Khaleel</h5>
+</footer>
+
+</body>
+</html>
