@@ -5,6 +5,6 @@ from .views import GreetingView
 
 
 urlpatterns = [
-    path('', views.GreetingView.as_view(), name= "greeting view"),
-    path('greetingcard', views.greetingcard, name= "greeting card")
+    path('greetingcard/', views.greetingcard, name= "greeting view"),
+    path('', views.GreetingView.as_view())
 ]
